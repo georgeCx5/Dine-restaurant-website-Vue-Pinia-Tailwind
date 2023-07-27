@@ -34,15 +34,15 @@ export default {
 }
 </script>
 <template>
-   <div class=" flex flex-col gap-12">
+   <article class=" flex flex-col gap-12">
       <div :class="` w-full h-[400px] ${data[dataIndex].bg} bg-cover bg-bottom shadow-2xl`"></div>
       <div class=" flex flex-col items-center text-center">
          <img class=" mb-9" :src="ptDivide" alt="pattern divide">
-         <h2 class=" mb-3 text-[2rem] leading-[2.5rem] tracking-[-.025rem] font-bold">
+         <h2 class=" mb-3 px-10 text-[2rem] leading-[2.5rem] tracking-[-.025rem] font-bold">
             {{ data[dataIndex].header }}</h2>
          <p class=" text-[1rem] leading-[1.625rem]">
             {{ data[dataIndex].main }}
          </p>
       </div>
-   </div>
+   </article>
 </template>
