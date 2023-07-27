@@ -18,7 +18,7 @@ export default {
    <header
       :class="` flex flex-col justify-start items-center w-full max-w-[425px] h-[600px] mb-[534px] pt-14 px-6 ${bgHeroMB} bg-cover bg-center text-white text-center`">
       <RouterLink class=" mb-11" to="/">
-         <img class=" h-8 " :src="logo" alt="logo">
+         <img class=" h-8 select-none " :src="logo" alt="logo" draggable="false">
       </RouterLink>
       <h1 class=" mb-3 text-[2rem] leading-[2.5rem] tracking-[-.025rem] font-light">
          Reservations</h1>

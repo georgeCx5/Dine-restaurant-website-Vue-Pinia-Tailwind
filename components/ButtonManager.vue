@@ -7,10 +7,10 @@ export default {
    }, computed: {
       getType() {
          if (this.btnType == 'Light') {
-            return 'bg-neo-cod-gray hover:bg-transparent text-white hover:text-neo-cod-gray border border-neo-cod-gray'
+            return 'bg-neo-cod-gray hover:bg-transparent hover:text-neo-cod-gray border border-neo-cod-gray'
          }
          if (this.btnType == 'Dark') {
-            return 'hover:bg-white text-white hover:text-neo-cod-gray border border-white'
+            return 'hover:bg-white hover:text-neo-cod-gray border border-white'
          }
       }
    },
@@ -19,7 +19,7 @@ export default {
          String,
          required: true,
       },
-      btnText:{
+      btnText: {
          String,
          default: 'Empty'
       }
@@ -27,7 +27,8 @@ export default {
 }
 </script>
 <template>
-   <button :class="` w-[245px] h-16 ${getType} text-[1rem] leading-[1rem] tracking-[0.15rem] font-semibold uppercase `">
+   <button
+      :class="` w-[245px] h-16 ${getType} text-white text-[1rem] leading-[1rem] tracking-[0.15rem] font-semibold uppercase select-none`">
       {{ btnText }}
    </button>
 </template>
