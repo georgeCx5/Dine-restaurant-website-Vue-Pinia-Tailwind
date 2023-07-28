@@ -1,3 +1,7 @@
+<script setup>
+import { useMainStore } from '../stores/MainStore';
+const store = useMainStore()
+</script>
 <script>
 export default {
    data() {
@@ -7,21 +11,24 @@ export default {
                header: 'Seared Salmon Fillet',
                main: 'Our locally sourced salmon served with a refreshing buckwheat summer salad.',
                bg: [
-                  'bg-[url(@/assets/images/homepage/salmon-mobile@2x.jpg)]'
+                  'bg-[url(@/assets/images/homepage/salmon-mobile@2x.jpg)]',
+                  'TB:bg-[url(@/assets/images/homepage/salmon-desktop-tablet@2x.jpg)]',
                ]
             },
             {
                header: 'Rosemary Filet Mignon',
                main: 'Our prime beef served to your taste with a delicious choice of seasonal sides.',
                bg: [
-                  'bg-[url(@/assets/images/homepage/beef-mobile@2x.jpg)]'
+                  'bg-[url(@/assets/images/homepage/beef-mobile@2x.jpg)]',
+                  'TB:bg-[url(@/assets/images/homepage/beef-desktop-tablet@2x.jpg)]',
                ]
             },
             {
                header: 'Summer Fruit Chocolate Mousse',
                main: 'Creamy mousse combined with summer fruits and dark chocolate shavings.',
                bg: [
-                  'bg-[url(@/assets/images/homepage/chocolate-mobile@2x.jpg)]'
+                  'bg-[url(@/assets/images/homepage/chocolate-mobile@2x.jpg)]',
+                  'TB:bg-[url(@/assets/images/homepage/chocolate-desktop-tablet@2x.jpg)]',
                ]
             },
          ]
@@ -37,7 +44,7 @@ export default {
 </script>
 <template>
    <article class=" flex flex-col gap-9 h-[418px]">
-      <div :class="` w-full h-[245px] ${data[dataIndex].bg} bg-cover bg-center`"></div>
+      <div :class="` w-full h-[245px] TB:h-[96px] ${store.joinArr(data[dataIndex].bg)} bg-cover bg-center`"></div>
       <div class=" flex flex-col gap-[.375rem] text-center">
          <h3 class=" text-[1.25rem] leading-[1.5rem] tracking-[-.015rem] font-bold">
             {{ data[dataIndex].header }}</h3>

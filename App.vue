@@ -13,10 +13,10 @@ export default {
 <template>
   <body class=" flex flex-col items-center bg-white text-neo-ebony-clay font-spartan">
     <RouterView />
-    <footer class=" w-full max-w-[425px] bg-neo-cod-gray text-white">
-      <div class=" flex flex-col items-center gap-10 py-20">
+    <footer class=" w-full max-w-[425px] TB:max-w-[1024px] DT:max-w-[1920px] bg-neo-cod-gray text-white">
+      <div class=" flex flex-col TB:flex-row items-center TB:items-start gap-10 TB:gap-[18.5%] DT:gap-[17.25%] TB:px-10 DT:px-[165px] py-20 TB:py-16 DT:py-20">
         <img class=" select-none" :src="logo" alt="logo" draggable="false">
-        <div class=" flex flex-col gap-8 text-center text-[.875rem] leading-[1.75rem] tracking-[.125rem]">
+        <div class=" flex flex-col DT:flex-row gap-8 DT:gap-[8rem] text-center TB:text-left text-[.875rem] leading-[1.75rem] tracking-[.125rem] uppercase">
           <div>
             <p>Marthwaite, Sedbergh</p>
             <p>Cumbria</p>

@@ -29,9 +29,12 @@ export const useMainStore = defineStore('main', {
     },
     getUpperPlus(state) {
       return state.peopleCount == 10 ? 'invisible' : ''
-    }
+    },
   },
   actions: {
+    joinArr(arrVal) {
+      return arrVal.join(' ')
+    },
     addPeople() {
       if (this.peopleCount < 10) this.peopleCount++
     },

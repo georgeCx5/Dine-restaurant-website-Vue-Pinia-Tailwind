@@ -1,8 +1,12 @@
+<script setup>
+import { useMainStore } from '@/stores/MainStore';
+const store = useMainStore()
+</script>
 <script>
-import ButtonManager from '../components/ButtonManager.vue';
+import ButtonManager from '@/components/ButtonManager.vue';
 import FirstFeatures from '@/components/FirstFeatures.vue';
-import SecondFeatures from '../components/SecondFeatures.vue';
-import ThirdFeatures from '../components/ThirdFeatures.vue';
+import SecondFeatures from '@/components/SecondFeatures.vue';
+import ThirdFeatures from '@/components/ThirdFeatures.vue';
 
 import logo from '@/assets/images/logo.svg?url'
 import ptDivide from '@/assets/images/patterns/pattern-divide.svg?url'
@@ -12,8 +16,16 @@ export default {
     return {
       logo,
       ptDivide,
-      bgHeroMB: 'bg-[url(@/assets/images/homepage/hero-bg-mobile@2x.jpg)]',
-      bgFooterMB: 'bg-[url(@/assets/images/homepage/ready-bg-mobile.jpg)]',
+      bgHero: [
+        'bg-[url(@/assets/images/homepage/hero-bg-mobile@2x.jpg)]',
+        'TB:bg-[url(@/assets/images/homepage/hero-bg-tablet@2x.jpg)]',
+        'DT:bg-[url(@/assets/images/homepage/hero-bg-desktop@2x.jpg)]',
+      ],
+      bgSection: [
+        'bg-[url(@/assets/images/homepage/ready-bg-mobile.jpg)]',
+        'TB:bg-[url(@/assets/images/homepage/ready-bg-tablet.jpg)]',
+        'DT:bg-[url(@/assets/images/homepage/ready-bg-desktop.jpg)]',
+      ]
     }
   },
   components: {
@@ -26,7 +38,7 @@ export default {
 </script>
 <template>
   <header
-    :class="` flex flex-col justify-center items-center w-full h-[748px] max-w-[425px] pt-20 px-6 ${bgHeroMB} bg-cover bg-center text-white text-center`">
+    :class="` flex flex-col justify-center items-center w-full h-[748px] max-w-[425px] pt-20 px-6 ${store.joinArr(bgHero)} bg-cover bg-center text-white text-center`">
     <img class=" h-8 mb-9 select-none" :src="logo" alt="logo" draggable="false">
     <h1 class=" mb-5 px-8 text-[2rem] leading-[2.5rem] tracking-[-.025rem] font-light">
       Exquisite dining since 1989</h1>
@@ -38,7 +50,7 @@ export default {
       <ButtonManager btn-type="Dark" btn-text="Book a table" />
     </RouterLink>
   </header>
-  <main class=" w-full max-w-[425px]">
+  <main class=" w-full max-w-[425px] TB:max-w-[1024px] DT:max-w-[1920px]">
     <section class=" relative flex flex-col gap-[6.25rem] mt-[-4.5rem] mb-[6.25rem] px-6 z-10">
       <FirstFeatures :data-index="0" />
       <FirstFeatures :data-index="1" />
@@ -63,7 +75,7 @@ export default {
       <ThirdFeatures />
     </section>
     <section
-      :class="` flex flex-col justify-center items-center gap-5 w-full h-[328px] px-6 ${bgFooterMB} bg-cover bg-center text-white`">
+      :class="` flex flex-col justify-center items-center gap-5 w-full h-[328px] px-6 ${store.joinArr(bgSection)} bg-cover bg-center text-white`">
       <h2 class=" text-center text-[2rem] leading-[2.5rem] tracking-[-.025rem] font-bold">
         Ready to make a reservation?</h2>
       <RouterLink to="/booking">

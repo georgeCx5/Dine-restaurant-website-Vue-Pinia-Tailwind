@@ -29,12 +29,12 @@ export default {
 }
 </script>
 <template>
-   <div class=" relative flex items-center gap-4 px-4 text-neo-cod-gray select-none">
+   <div class=" relative flex items-center TB:justify-between gap-4 px-4 TB:px-6 text-neo-cod-gray select-none">
       <h5 class=" uppercase">
          {{ mainStore.timeVal }}</h5>
       <img @click="mainStore.isTimeOpen = !mainStore.isTimeOpen" :class="` ${getRotate} cursor-pointer py-1`" :src="arrow"
          alt="arrow" draggable="false">
-      <Transition name="fade">
+      <Transition name="fade-drop">
          <div v-show="mainStore.isTimeOpen"
             class=" absolute top-[3.125rem] left-0 flex flex-col gap-3 w-[106px] h-[103px] px-4 py-4 bg-white shadow-xl">
             <button @click="setNewVal('am')" class=" flex items-center gap-4 uppercase">
@@ -50,13 +50,13 @@ export default {
    </div>
 </template>
 <style>
-.fade-enter-active,
-.fade-leave-active {
+.fade-drop-enter-active,
+.fade-drop-leave-active {
    transition: opacity .25s ease-in-out
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.fade-drop-enter-from,
+.fade-drop-leave-to {
    opacity: 0;
 }
 </style>

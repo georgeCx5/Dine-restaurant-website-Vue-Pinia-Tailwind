@@ -2,11 +2,13 @@
 import { useMainStore } from '@/stores/MainStore';
 import { mapStores } from 'pinia';
 
+import ButtonManager from '../components/ButtonManager.vue';
+import DropdownTime from '../components/DropdownTime.vue';
 import logo from '@/assets/images/logo.svg?url'
 import iconMinus from '@/assets/images/icons/icon-minus.svg?url'
 import iconPlus from '@/assets/images/icons/icon-plus.svg?url'
-import ButtonManager from '../components/ButtonManager.vue';
-import DropdownTime from '../components/DropdownTime.vue';
+import ptCurve from '@/assets/images/patterns/pattern-curve-bottom-right.svg?url'
+import ptLines from '@/assets/images/patterns/pattern-lines.svg?url'
 
 export default {
    data() {
@@ -14,7 +16,13 @@ export default {
          logo,
          iconMinus,
          iconPlus,
-         bgHeroMB: 'bg-[url(@/assets/images/booking/hero-bg-mobile.jpg)]',
+         ptCurve,
+         ptLines,
+         bgHero: [
+            'bg-[url(@/assets/images/booking/hero-bg-mobile.jpg)]',
+            'TB:bg-[url(@/assets/images/booking/hero-bg-tablet.jpg)]',
+            'DT:bg-[url(@/assets/images/booking/hero-bg-desktop.jpg)]',
+         ]
       }
    },
    components: {
@@ -28,12 +36,14 @@ export default {
 </script>
 <template>
    <header
-      :class="` flex flex-col justify-start items-center w-full max-w-[425px] h-[600px] mb-[534px] px-6 ${bgHeroMB} bg-cover bg-center text-white text-center`">
+      :class="` relative flex flex-col justify-start items-center DT:items-start w-full max-w-[425px] TB:max-w-[1024px] DT:max-w-[1920px] h-[600px] mb-[534px] TB:mb-[435px] DT:mb-[320px] px-6 TB:px-10 DT:px-[10.25rem] ${mainStore.joinArr(bgHero)} bg-cover bg-center text-white text-center DT:text-left`">
+      <img class=" absolute left-0 bottom-[-320px] hidden DT:block w-[69%]" :src="ptCurve" alt="pattern">
       <!-- Form -->
       <Transition name="fade">
-         <div v-if="!mainStore.isSubmitted" class=" relative top-0 w-full max-w-[425px]">
+         <div v-if="!mainStore.isSubmitted" class=" relative top-0 DT:self-end w-full TB:w-[540px] z-20">
+            <img class=" absolute left-[-12%] bottom-[-825px] hidden DT:block z-30" :src="ptLines" alt="pattern">
             <div
-               class=" absolute top-[463px] w-full px-8 py-8 bg-white text-neo-inactive text-[1.25rem] leading-[1.75rem] shadow-xl select-none">
+               class=" absolute top-[463px] TB:top-[370px] DT:top-[258px] w-full p-8 TB:p-12 bg-white text-neo-inactive text-[1.25rem] leading-[1.75rem] shadow-xl TB:shadow-2xl select-none z-40">
                <!-- Name -->
                <div class=" relative flex flex-col gap-3 mb-[2.125rem]">
                   <input @blur="mainStore.checkName()" @keydown="mainStore.isRightName = true"
@@ -55,13 +65,13 @@ export default {
                      This field is required</h5>
                </div>
                <!-- Pick a date -->
-               <div class=" relative flex flex-col items-start gap-2 mb-[2.125rem]">
-                  <h4 :class="` ${mainStore.checkValue(mainStore.isRightDate).txtColor}`">
+               <div class=" relative flex flex-col TB:flex-row TB:justify-between items-start gap-2 mb-[2.125rem]">
+                  <h4 :class="` TB:self-center TB:w-[90px] ${mainStore.checkValue(mainStore.isRightDate).txtColor}`">
                      Pick a date</h4>
                   <h5 v-show="mainStore.isRightDate == false"
                      class=" absolute bottom-[-20px] text-neo-error text-[.625rem] leading-[.625rem] tracking-[-.0075rem]">
                      This field is incomplete/incorrect</h5>
-                  <div class=" flex justify-between w-full">
+                  <div class=" flex justify-between w-full TB:w-[65%]">
                      <div class=" flex flex-col gap-[.875rem] w-[27.75%]">
                         <input @blur="mainStore.checkDate()" @keydown="mainStore.isRightDate = true"
                            :class="` w-full px-4 ${mainStore.checkValue(mainStore.isRightDate).txtColor} uppercase focus:outline-none`"
@@ -83,13 +93,13 @@ export default {
                   </div>
                </div>
                <!-- Pick a time -->
-               <div class=" relative flex flex-col items-start gap-2 mb-9">
-                  <h4 :class="mainStore.checkValue(mainStore.isRightTime).txtColor">
+               <div class=" relative flex flex-col TB:flex-row TB:justify-between items-start gap-2 mb-9">
+                  <h4 :class="` TB:self-center TB:w-[90px] ${mainStore.checkValue(mainStore.isRightTime).txtColor}`">
                      Pick a time</h4>
                   <h5 v-show="mainStore.isRightTime == false"
                      class=" absolute bottom-[-20px] text-neo-error text-[.625rem] leading-[.625rem] tracking-[-.0075rem]">
                      This field is incomplete/incorrect</h5>
-                  <div class=" flex justify-between w-full">
+                  <div class=" flex justify-between w-full TB:w-[65%]">
                      <div class=" flex flex-col gap-[.875rem] w-[27.75%]">
                         <input @blur="mainStore.checkTime()" @keydown="mainStore.isRightTime = true"
                            :class="` w-full px-4 ${mainStore.checkValue(mainStore.isRightTime).txtColor} focus:outline-none`"
@@ -128,16 +138,19 @@ export default {
          </div>
       </Transition>
       <!-- - -->
-      <RouterLink class=" mt-14 mb-11" to="/">
-         <img class=" h-8 select-none " :src="logo" alt="logo" draggable="false">
+      <RouterLink class=" self-start mt-14 DT:mt-16 mb-11 TB:mb-[4.5rem] DT:mb-[9.5rem]" to="/">
+         <img class=" h-8 TB:h-10 select-none " :src="logo" alt="logo" draggable="false">
       </RouterLink>
-      <h1 class=" mb-3 text-[2rem] leading-[2.5rem] tracking-[-.025rem] font-light">
-         Reservations</h1>
-      <p class=" mb-5 text-[1rem] leading-[1.625rem]">
-         We can’t wait to host you. If you have any special requirements please feel free to
-         call on the phone number below. We’ll be happy to accommodate you.
-      </p>
-      <ButtonManager btn-type="Dark" btn-text="Reserve place" />
+      <div class=" DT:w-[40%]">
+         <h1
+            class=" mb-3 text-[2rem] TB:text-[3rem] DT:text-[5rem] leading-[2.5rem] TB:leading-[4rem] DT:leading-[5rem] tracking-[-.025rem] TB:tracking-[-.0375rem] DT:tracking-[-.0625rem] font-light">
+            Reservations</h1>
+         <p class=" mb-5 TB:px-[3.75rem] DT:px-0 text-[1rem] TB:text-[1.25rem] leading-[1.625rem] TB:leading-[1.875rem]">
+            We can’t wait to host you. If you have any special requirements please feel free to
+            call on the phone number below. We’ll be happy to accommodate you.
+         </p>
+      </div>
+      <ButtonManager btn-type="Dark" btn-text="Reserve place" class=" TB:hidden" />
    </header>
 </template>
 <style>

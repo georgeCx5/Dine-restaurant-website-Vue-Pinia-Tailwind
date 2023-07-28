@@ -10,21 +10,27 @@ export default {
                header: 'Family Gathering',
                main: 'We love catering for entire families. So please bring everyone along for a special meal with your loved ones. We’ll provide a memorable experience for all.',
                bg: [
-                  'bg-[url(@/assets/images/homepage/family-gathering-mobile@2x.jpg)]'
+                  'bg-[url(@/assets/images/homepage/family-gathering-mobile@2x.jpg)]',
+                  'TB:bg-[url(@/assets/images/homepage/family-gathering-tablet@2x.jpg)]',
+                  'DT:bg-[url(@/assets/images/homepage/family-gathering-desktop@2x.jpg)]',
                ]
             },
             {
                header: 'Special Events',
                main: 'Whether it’s a romantic dinner or special date you’re celebrating with others we’ll look after you. We’ll be sure to mark your special date with an unforgettable meal.',
                bg: [
-                  'bg-[url(@/assets/images/homepage/special-events-mobile@2x.jpg)]'
+                  'bg-[url(@/assets/images/homepage/special-events-mobile@2x.jpg)]',
+                  'TB:bg-[url(@/assets/images/homepage/special-events-tablet@2x.jpg)]',
+                  'DT:bg-[url(@/assets/images/homepage/special-events-desktop@2x.jpg)]',
                ]
             },
             {
                header: 'Social Events',
                main: 'Are you looking to have a larger social event? No problem! We’re more than happy to cater for big parties. We’ll work with you to make your event a hit with everyone.',
                bg: [
-                  'bg-[url(@/assets/images/homepage/social-events-mobile@2x.jpg)]'
+                  'bg-[url(@/assets/images/homepage/social-events-mobile@2x.jpg)]',
+                  'TB:bg-[url(@/assets/images/homepage/social-events-tablet@2x.jpg)]',
+                  'DT:bg-[url(@/assets/images/homepage/social-events-desktop@2x.jpg)]',
                ]
             }
          ]
@@ -48,7 +54,7 @@ export default {
       <div v-for="(item, index) in data">
          <Transition>
             <div v-show="index == mainStore.featureIndex"
-               :class="` absolute w-full h-full ${item.bg} bg-cover bg-center shadow-2xl`"></div>
+               :class="` absolute w-full h-full ${mainStore.joinArr(item.bg)} bg-cover bg-center shadow-2xl`"></div>
          </Transition>
       </div>
    </div>
