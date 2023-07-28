@@ -12,6 +12,9 @@ export default {
          if (this.btnType == 'Dark') {
             return 'hover:bg-white hover:text-neo-cod-gray border border-white'
          }
+      },
+      getWsize() {
+         return this.isWsizeFull ? 'w-full' : 'w-[245px]'
       }
    },
    props: {
@@ -22,13 +25,17 @@ export default {
       btnText: {
          String,
          default: 'Empty'
+      },
+      isWsizeFull: {
+         Boolean,
+         default: false,
       }
    }
 }
 </script>
 <template>
    <button
-      :class="` w-[245px] h-16 ${getType} text-white text-[1rem] leading-[1rem] tracking-[0.15rem] font-semibold uppercase select-none`">
+      :class="` ${getWsize} h-16 ${getType} text-white text-[1rem] leading-[1rem] tracking-[0.15rem] font-semibold uppercase select-none`">
       {{ btnText }}
    </button>
 </template>
