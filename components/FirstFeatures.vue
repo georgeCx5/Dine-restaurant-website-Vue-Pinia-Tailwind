@@ -42,7 +42,7 @@ export default {
 }
 </script>
 <template>
-   <article class=" TB:relative flex flex-col gap-12 TB:gap-14">
+   <article class=" relative flex flex-col gap-12 TB:gap-14">
       <div :class="` w-full h-[400px] TB:h-[360px] ${store.joinArr(data[dataIndex].bg)} bg-cover bg-bottom shadow-2xl`">
       </div>
       <div class=" relative flex flex-col items-center TB:px-[3.75rem] text-center">
@@ -54,6 +54,6 @@ export default {
             {{ data[dataIndex].main }}
          </p>
       </div>
-      <img v-show="dataIndex == 1" class=" absolute top-56 -right-14 hidden TB:block z-20" :src="ptLines" alt="patternLines">
+      <img v-show="dataIndex == 1" class=" absolute top-56 -right-14 hidden TB:block" :src="ptLines" alt="patternLines">
    </article>
 </template>

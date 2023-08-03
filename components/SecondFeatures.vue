@@ -43,12 +43,15 @@ export default {
 }
 </script>
 <template>
-   <article class=" flex flex-col gap-9 h-[418px]">
-      <div :class="` w-full h-[245px] TB:h-[96px] ${store.joinArr(data[dataIndex].bg)} bg-cover bg-center`"></div>
-      <div class=" flex flex-col gap-[.375rem] text-center">
+   <article class=" flex flex-col TB:flex-row TB:justify-between gap-9 TB:gap-0 h-[394px] TB:h-full">
+      <div
+         :class="` TB:relative w-full TB:w-[22.5%] h-[245px] TB:h-[96px] ${store.joinArr(data[dataIndex].bg)} bg-cover bg-center`">
+         <div class=" absolute -right-8 top-4 hidden TB:block w-8 h-px bg-neo-beaver"></div>
+      </div>
+      <div class=" flex flex-col gap-[.375rem] TB:w-[66%] text-center TB:text-left">
          <h3 class=" text-[1.25rem] leading-[1.5rem] tracking-[-.015rem] font-bold">
             {{ data[dataIndex].header }}</h3>
-         <p class=" px-8 text-[1rem] leading-[1.625rem]">
+         <p class=" px-8 TB:px-0 text-[1rem] leading-[1.625rem]">
             {{ data[dataIndex].main }}
          </p>
       </div>
