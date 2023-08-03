@@ -57,6 +57,7 @@ export default {
     </RouterLink>
   </header>
   <main class=" w-full max-w-[425px] TB:max-w-[1024px] DT:max-w-[1920px]">
+    <!-- First F -->
     <section
       class=" relative flex flex-col gap-[6.25rem] TB:gap-[7.375rem] DT:gap-[7rem] mt-[-4.5rem] TB:-mt-24 DT:mt-[-4.5rem] DT:-mb-20 pb-[6.25rem] TB:pb-[7.375rem] DT:pb-0 px-6 TB:px-24 DT:px-[10.25rem] overflow-hidden">
       <FirstFeatures :data-index="0" />
@@ -68,8 +69,8 @@ export default {
     </section>
     <!-- Second F -->
     <section
-      class=" flex flex-col gap-[5.25rem] TB:gap-[3.375rem] mb-20 TB:mb-[7.5rem] px-6 TB:px-0 pt-[4.5rem] pb-[3rem] TB:py-24 bg-neo-cod-gray text-white">
-      <article class=" flex flex-col items-center TB:px-40 text-center">
+      class=" flex flex-col DT:flex-row DT:justify-between gap-[5.25rem] TB:gap-[3.375rem] mb-20 TB:mb-[7.5rem] DT:mb-40 px-6 TB:px-0 DT:px-[10.25rem] pt-[4.5rem] pb-[3rem] TB:py-24 DT:pt-[12.5rem] DT:pb-[7.5rem] bg-neo-cod-gray text-white">
+      <article class=" flex flex-col items-center DT:items-start DT:w-[40%] TB:px-40 DT:px-0 text-center DT:text-left">
         <img class=" mb-9 TB:mb-10 select-none" :src="ptDivide" alt="pattern divide" draggable="false">
         <h2
           class=" mb-3 TB:mb-7 text-[2rem] TB:text-[3rem] leading-[2.5rem] TB:leading-[3rem] tracking-[-0.025rem] font-bold">
@@ -79,7 +80,7 @@ export default {
           Our menu is revamped every season.
         </p>
       </article>
-      <div class=" flex flex-col gap-6 TB:px-24">
+      <div class=" flex flex-col gap-6 DT:w-[48.5%] DT:mt-12 TB:px-24 DT:px-0">
         <SecondFeatures :data-index="0" />
         <div class=" w-full h-px bg-white bg-opacity-[.15]"></div>
         <SecondFeatures :data-index="1" />
@@ -88,12 +89,13 @@ export default {
       </div>
     </section>
     <!-- Third F -->
-    <section class=" relative flex flex-col gap-12 TB:gap-14 mb-[7.75rem] TB:mb-[7.5rem] px-6">
+    <section class=" relative flex flex-col DT:flex-row DT:justify-end DT:items-center gap-12 TB:gap-14 DT:gap-[11.5%] mb-[7.75rem] TB:mb-[7.5rem] DT:mb-40 px-6 DT:px-[10.25rem]">
       <ThirdFeatures />
-      <img class=" absolute -top-32 -left-96 hidden TB:block h-80" :src="ptCurveTR" alt="ptCurveTR">
+      <img class=" absolute -top-32 DT:-top-40 -left-96 hidden TB:block h-80" :src="ptCurveTR" alt="ptCurveTR">
     </section>
+    <!-- Little fourth -->
     <section
-      :class="` flex flex-col justify-center items-center gap-5 w-full h-[328px] px-6 ${store.joinArr(bgSection)} bg-cover bg-center text-white`">
+      :class="` flex flex-col DT:flex-row justify-center DT:justify-between items-center gap-5 w-full h-[328px] TB:h-[272px] DT:h-[240px] px-6 DT:px-[10.25rem] ${store.joinArr(bgSection)} bg-cover bg-center text-white`">
       <h2
         class=" text-center text-[2rem] TB:text-[3rem] leading-[2.5rem] TB:leading-[3rem] tracking-[-.025rem] font-bold">
         Ready to make a reservation?</h2>

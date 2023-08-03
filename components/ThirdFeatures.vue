@@ -42,7 +42,11 @@ export default {
       ButtonManager,
    },
    computed: {
-      ...mapStores(useMainStore)
+      ...mapStores(useMainStore),
+      getDTGap() {
+         return this.mainStore.featureIndex == 0 ?
+            'DT:mb-[3.75rem]' : 'DT:mb-[1.875rem]'
+      }
    },
    methods: {
       setActiveButton(value) {
@@ -52,31 +56,33 @@ export default {
 }
 </script>
 <template>
-   <div class=" relative h-[400px] TB:h-[360px] TB:mx-[4.5rem] z-10">
+   <div class=" relative DT:w-[48.5%] h-[400px] TB:h-[360px] DT:h-[600px] TB:mx-[4.5rem] DT:mx-0 z-10">
       <div v-for="(item, index) in data">
          <Transition>
             <div v-show="index == mainStore.featureIndex"
                :class="` absolute w-full h-full ${mainStore.joinArr(item.bg)} bg-cover bg-center shadow-2xl`"></div>
          </Transition>
       </div>
-      <img class=" absolute -top-10 -left-14 hidden TB:block z-10" :src="ptLines" alt="ptLines">
+      <img class=" absolute -top-10 -left-14 DT:-left-12 hidden TB:block z-10" :src="ptLines" alt="ptLines">
    </div>
-   <div class=" flex flex-col gap-7 TB:gap-12">
-      <div class=" flex flex-col TB:flex-row items-center TB:justify-around gap-4 w-full ">
+   <div class=" flex flex-col DT:flex-col-reverse gap-7 TB:gap-12 DT:gap-20 DT:w-[40%]">
+      <div class=" flex flex-col TB:flex-row DT:flex-col items-center DT:items-start TB:justify-around gap-4 w-full ">
          <div v-for="(item, index) in data" @click="mainStore.featureIndex = index"
             class=" relative flex flex-col items-center z-10">
             <button
                :class="` text-neo-btn ${setActiveButton(index)} hover:text-opacity-100 text-[1rem] leading-[1.75rem] tracking-[.15rem] font-semibold uppercase select-none`">
                {{ item.header }}
             </button>
-            <div v-show="index == mainStore.featureIndex" class=" TB:absolute TB:-bottom-2 w-12 h-px bg-neo-beaver"></div>
+            <div v-show="index == mainStore.featureIndex"
+               class=" TB:absolute TB:-bottom-2 DT:bottom-1/2 DT:-left-32 w-12 DT:w-24 h-px bg-neo-beaver"></div>
          </div>
       </div>
-      <div class=" flex flex-col items-center TB:px-28 text-center">
+      <div class=" flex flex-col items-center DT:items-start TB:px-28 DT:px-0 text-center DT:text-left">
          <h1
             class=" mb-3 TB:mb-5 text-[2rem] TB:text-[3rem] leading-[2.5rem] TB:leading-[3rem] tracking-[-.025rem] font-bold">
             {{ data[mainStore.featureIndex].header }}</h1>
-         <p class=" mb-7 TB:mb-[3.75rem] text-[1rem] TB:text-[1.25rem] leading-[1.625rem] TB:leading-[1.875rem]">
+         <p
+            :class="` mb-7 TB:mb-[3.75rem] ${getDTGap} text-[1rem] TB:text-[1.25rem] leading-[1.625rem] TB:leading-[1.875rem]`">
             {{ data[mainStore.featureIndex].main }}
          </p>
          <RouterLink to="/booking">
