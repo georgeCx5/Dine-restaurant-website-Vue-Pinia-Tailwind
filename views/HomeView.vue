@@ -42,12 +42,13 @@ export default {
 </script>
 <template>
   <header
-    :class="` flex flex-col justify-center items-center w-full max-w-[425px] TB:max-w-[1024px] DT:max-w-[1920px] h-[748px] TB:h-[992px] DT:h-[820px] pt-20 TB:pt-36 px-6 TB:px-10 ${store.joinArr(bgHero)} bg-cover bg-center text-white text-center`">
-    <img class=" h-8 TB:h-10 mb-9 TB:mb-10 select-none" :src="logo" alt="logo" draggable="false">
+    :class="` flex flex-col justify-center DT:justify-start items-center DT:items-start w-full max-w-[425px] TB:max-w-[1024px] DT:max-w-[1920px] h-[748px] TB:h-[992px] DT:h-[820px] pt-20 TB:pt-36 DT:pt-16 px-6 TB:px-10 DT:px-[10.25rem] ${store.joinArr(bgHero)} bg-cover bg-center text-white text-center DT:text-left`">
+    <img class=" h-8 TB:h-10 mb-9 TB:mb-10 DT:mb-[9.5rem] select-none" :src="logo" alt="logo" draggable="false">
     <h1
-      class=" mb-5 px-8 TB:px-40 text-[2rem] TB:text-[3rem] leading-[2.5rem] TB:leading-[4rem] tracking-[-.025rem] TB:tracking-[-.0375rem] font-light">
+      class=" DT:w-[50%] mb-5 DT:mb-[.625rem] px-8 TB:px-40 DT:px-0 text-[2rem] TB:text-[3rem] DT:text-[5rem] leading-[2.5rem] TB:leading-[4rem] DT:leading-[5rem] tracking-[-.025rem] TB:tracking-[-.0375rem] DT:tracking-[-0.0625rem] font-light">
       Exquisite dining since 1989</h1>
-    <p class=" mb-[3.25rem] TB:px-14 text-[1rem] TB:text-[1.25rem] leading-[1.625rem] TB:leading-[1.875rem]">
+    <p
+      class=" DT:w-[40%] mb-[3.25rem] DT:mb-10 TB:px-14 DT:px-0 text-[1rem] TB:text-[1.25rem] leading-[1.625rem] TB:leading-[1.875rem]">
       Experience our seasonal menu in beautiful country surroundings. Eat the freshest produce from
       the comfort of our farmhouse.
     </p>
@@ -57,11 +58,13 @@ export default {
   </header>
   <main class=" w-full max-w-[425px] TB:max-w-[1024px] DT:max-w-[1920px]">
     <section
-      class=" relative flex flex-col gap-[6.25rem] TB:gap-[7.375rem] mt-[-4.5rem] TB:-mt-24 pb-[6.25rem] TB:pb-[7.375rem] px-6 TB:px-24 overflow-hidden">
+      class=" relative flex flex-col gap-[6.25rem] TB:gap-[7.375rem] DT:gap-[7rem] mt-[-4.5rem] TB:-mt-24 DT:mt-[-4.5rem] DT:-mb-20 pb-[6.25rem] TB:pb-[7.375rem] DT:pb-0 px-6 TB:px-24 DT:px-[10.25rem] overflow-hidden">
       <FirstFeatures :data-index="0" />
       <FirstFeatures :data-index="1" />
-      <img class=" absolute top-48 left-[-385px] hidden TB:block h-80" :src="ptCurveTR" alt="ptCurveTR">
-      <img class=" absolute bottom-0 right-[-385px] hidden TB:block h-80" :src="ptCurveTL" alt="ptCurveTL">
+      <img class=" absolute top-48 DT:top-72 left-[-385px] DT:left-0 hidden TB:block h-80" :src="ptCurveTR"
+        alt="ptCurveTR">
+      <img class=" absolute bottom-0 DT:bottom-20 right-[-385px] DT:right-0 hidden TB:block h-80" :src="ptCurveTL"
+        alt="ptCurveTL">
     </section>
     <!-- Second F -->
     <section
